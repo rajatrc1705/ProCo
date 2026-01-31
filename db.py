@@ -33,6 +33,7 @@ class IssueStatus(enum.Enum):
     APPROVED = "approved"
     IN_PROGRESS = "in_progress"
     COMPLETED = "completed"
+    REJECTED = "rejected"
 
 
 class VendorSpecialty(enum.Enum):

@@ -48,7 +48,26 @@ class ChatMessageRead(BaseModel):
 
     id: uuid.UUID
     issue_id: uuid.UUID | None
+    property_id: uuid.UUID | None
     tenant_id: uuid.UUID
     role: ChatRole
     content: str
     created_at: datetime
+
+
+class ChatRequest(BaseModel):
+    tenant_id: uuid.UUID
+    message: str
+    issue_id: uuid.UUID | None = None
+    property_id: uuid.UUID | None = None
+
+
+class ChatResponse(BaseModel):
+    response: str
+    issue_created: bool
+    issue_id: uuid.UUID | None = None
+
+
+class IssueActionResponse(BaseModel):
+    id: uuid.UUID
+    status: IssueStatus
