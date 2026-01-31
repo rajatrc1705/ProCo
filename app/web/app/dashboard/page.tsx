@@ -8,7 +8,6 @@ import { StatusChart } from "@/components/dashboard/status-chart";
 import { PropertyMap } from "@/components/dashboard/property-map";
 import { IssuesTable, type Issue, type IssueStatus } from "@/components/dashboard/issues-table";
 import { LayoutDashboard, AlertCircle, Clock, DollarSign, CheckCircle } from "lucide-react";
-import { jsPDF } from "jspdf";
 import {
   approveIssue,
   fetchIssues,
@@ -147,28 +146,28 @@ export default function DashboardPage() {
     router.push(`/dashboard/chat/${id}`);
   };
 
-  const handleDownloadReport = (id: string) => {
+  const handleDownloadReport = async (id: string) => {
     const issue = issues.find((i) => i.id === id);
-    if (issue) {
-      const doc = new jsPDF();
-      doc.setFontSize(16);
-      doc.text(`Issue Report #${id}`, 14, 20);
-      doc.setFontSize(11);
-      const lines = [
-        `Summary: ${issue.summary}`,
-        `Tenant: ${issue.tenantName}`,
-        `Date Reported: ${issue.dateReported}`,
-        `Status: ${issue.status}`,
-        `Vendor: ${issue.vendor}`,
-        `Cost: $${issue.cost.toLocaleString()}`,
-      ];
-      let y = 32;
-      lines.forEach((line) => {
-        doc.text(line, 14, y);
-        y += 8;
-      });
-      doc.save(`issue-report-${id}.pdf`);
-    }
+    if (!issue) return;
+    const { jsPDF } = await import("jspdf");
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text(`Issue Report #${id}`, 14, 20);
+    doc.setFontSize(11);
+    const lines = [
+      `Summary: ${issue.summary}`,
+      `Tenant: ${issue.tenantName}`,
+      `Date Reported: ${issue.dateReported}`,
+      `Status: ${issue.status}`,
+      `Vendor: ${issue.vendor}`,
+      `Cost: $${issue.cost.toLocaleString()}`,
+    ];
+    let y = 32;
+    lines.forEach((line) => {
+      doc.text(line, 14, y);
+      y += 8;
+    });
+    doc.save(`issue-report-${id}.pdf`);
   };
 
   // Calculate stats
