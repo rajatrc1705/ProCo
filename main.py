@@ -1,5 +1,10 @@
+from db import create_tables, seed_dummy_data
+
+
 def main():
-    print("Hello from proco!")
+    create_tables()
+    seed_dummy_data()
+    print("Supabase tables created via ORM.")
 
 
 if __name__ == "__main__":

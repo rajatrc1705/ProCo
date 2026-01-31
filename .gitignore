@@ -1,0 +1,59 @@
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.venv/
+venv/
+env/
+.envrc
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.cache/
+pip-wheel-metadata/
+*.egg-info/
+dist/
+build/
+
+# FastAPI / Uvicorn
+*.log
+uvicorn*.log
+
+# Node / v0 frontend
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+dist/
+build/
+.parcel-cache/
+.next/
+.nuxt/
+.svelte-kit/
+.vite/
+.cache/
+.turbo/
+.vercel/
+.eslintcache
+*.tsbuildinfo
+
+# Supabase
+supabase/.temp/
+supabase/.branches/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local curl command list
+curl_commands.txt

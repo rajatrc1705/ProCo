@@ -1,0 +1,12 @@
+.env
+.env.*
+.venv/
+venv/
+env/
+node_modules/
+dist/
+build/
+.next/
+.vercel/
+supabase/.temp/
+supabase/.branches/
