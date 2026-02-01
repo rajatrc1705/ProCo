@@ -82,6 +82,7 @@ export default function DashboardPage() {
           propertyAddress: propertyAddressMap.get(issue.property_id) ?? "Unknown property",
           category: issue.category,
           dateReported: formatDate(issue.created_at),
+          dateAppointment: formatDate(issue.appointment_at ?? undefined),
           tenantName: tenantMap.get(issue.tenant_id) ?? "Unknown",
           vendor: issue.vendor_id ? vendorMap.get(issue.vendor_id) ?? "Unassigned" : "Unassigned",
           cost: issue.estimated_cost ?? 0,

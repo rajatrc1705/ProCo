@@ -51,6 +51,7 @@ class IssueRead(BaseModel):
     status: IssueStatus
     vendor_id: uuid.UUID | None
     estimated_cost: float | None
+    appointment_at: datetime | None
     created_at: datetime
 
 
@@ -89,6 +90,12 @@ class ChatResponse(BaseModel):
 class IssueActionResponse(BaseModel):
     id: uuid.UUID
     status: IssueStatus
+
+
+class VendorResponseRequest(BaseModel):
+    accepted: bool
+    appointment_at: datetime | None = None
+    notes: str | None = None
 
 
 class WalletSummary(BaseModel):

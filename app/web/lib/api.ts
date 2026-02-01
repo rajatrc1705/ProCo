@@ -11,6 +11,7 @@ export type ApiIssue = {
   status: string;
   vendor_id: string | null;
   estimated_cost: number | null;
+  appointment_at: string | null;
   created_at: string;
 };
 

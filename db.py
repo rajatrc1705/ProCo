@@ -138,6 +138,9 @@ class Issue(Base):
         UUID(as_uuid=True), ForeignKey("vendors.id"), nullable=True
     )
     estimated_cost: Mapped[float | None] = mapped_column(Numeric(10, 2), nullable=True)
+    appointment_at: Mapped[object | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     created_at: Mapped[object] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
