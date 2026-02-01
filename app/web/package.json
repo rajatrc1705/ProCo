@@ -2,6 +2,10 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "npm@latest",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
