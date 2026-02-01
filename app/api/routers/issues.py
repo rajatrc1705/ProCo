@@ -97,7 +97,7 @@ async def send_vendor_request(issue_id: uuid.UUID, vendor_id: uuid.UUID, db: Ses
 
     async with httpx.AsyncClient(timeout=10) as client:
         response = await client.post(
-            "https://meko27.app.n8n.cloud/webhook-test/74eab492-eeba-48a1-9669-4901608bd2a7",
+            "https://meko27.app.n8n.cloud/webhook/74eab492-eeba-48a1-9669-4901608bd2a7",
             json={
                 "vendor_email": vendor.email,
                 "property_address": property_.address,
