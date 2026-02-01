@@ -1,4 +1,5 @@
-# Cursor 2-Day AI Hackathon — Repo Template
+# Cursor 2-Day AI Hackathon 
+# Team: ICARUS
 
 ![Cursor 2-Day AI Hackathon](https://ai-beavers.com/_next/image?url=%2Fimages%2Fhackathon-hero-20012026.png&w=1920&q=75)
 
@@ -9,7 +10,7 @@
 
 ---
 
-# Project Name
+# ProCo
 
 > One-line description of your project
 
