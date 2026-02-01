@@ -137,8 +137,10 @@ export default function TenantHomePage() {
             dateSubmitted: formatDate(issue.created_at),
             createdAt: issue.created_at,
           }));
-        const tenantIssueRecords = apiIssues
-          .filter((issue) => issue.tenant_id === tenantId)
+        const appointmentIssues = apiIssues
+          .filter((issue) =>
+            tenantPropertyId ? issue.property_id === tenantPropertyId : issue.tenant_id === tenantId
+          )
           .map((issue) => ({
             id: issue.id,
             summary: issue.summary,
@@ -150,7 +152,7 @@ export default function TenantHomePage() {
         if (isMounted) {
           setSubmittedIssues(tenantIssues);
           setApartmentIssues(apartmentIssueList);
-          setTenantIssues(tenantIssueRecords);
+          setTenantIssues(appointmentIssues);
         }
       } catch (error) {
         if (isMounted) {
