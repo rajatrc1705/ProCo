@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { Suspense, useState, useRef, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ChatMessage, type Message } from "@/components/chat/chat-message";
@@ -31,7 +31,7 @@ interface ChatSession {
   preview: string;
 }
 
-export default function TenantReportPage() {
+function TenantReportContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { tenantId, propertyId } = useActiveTenant();
@@ -409,5 +409,19 @@ export default function TenantReportPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function TenantReportPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex h-screen items-center justify-center text-muted-foreground">
+          Loading...
+        </div>
+      }
+    >
+      <TenantReportContent />
+    </Suspense>
   );
 }
