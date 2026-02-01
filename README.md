@@ -16,11 +16,11 @@ What technologies power your project?
 
 <!-- List your main technologies, frameworks, and services -->
 
-- **Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS 4, Radix UI, Lucide React
-- **Backend: Python, FastAPI, Uvicorn, Pydantic
-- **Database: PostgreSQL (Supabase), SQLAlchemy
-- **AI/ML: LangChain, OpenAI GPT-4o-mini
-- **Hosting: Vercel, cursor, n8n, Render(deployment)
+- Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS 4, Radix UI, Lucide React
+- Backend: Python, FastAPI, Uvicorn, Pydantic
+- Database: PostgreSQL (Supabase), SQLAlchemy
+- AI/ML: LangChain, OpenAI GPT-4o-mini
+- Hosting: Vercel, cursor, n8n, Render(deployment)
 
 ## How to Run
 
