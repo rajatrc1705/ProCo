@@ -36,25 +36,14 @@ def run_agent(
     image_description: str | None = None,
     issue_id: uuid.UUID | None = None,
 ) -> tuple[str, uuid.UUID | None]:
-    unresolved_statuses = {
-        IssueStatus.PENDING,
-        IssueStatus.APPROVED,
-        IssueStatus.IN_PROGRESS,
-    }
-
-    history = (
-        db.query(ChatMessage)
-        .join(Issue, ChatMessage.issue_id == Issue.id)
-        .filter(
-            ChatMessage.tenant_id == tenant_id,
-            ChatMessage.property_id == property_id,
-            Issue.status.in_(unresolved_statuses),
+    history: list[ChatMessage] = []
+    if issue_id is not None:
+        history = (
+            db.query(ChatMessage)
+            .filter(ChatMessage.issue_id == issue_id)
+            .order_by(ChatMessage.created_at.asc())
+            .all()
         )
-        .order_by(ChatMessage.created_at.desc())
-        .limit(12)
-        .all()
-    )
-    history = list(reversed(history))
 
     message_with_image = message
     if image_description:
@@ -202,15 +191,7 @@ def run_agent(
             f"\nSuggested vendor: {vendor_name}"
         )
         summary_messages = [SystemMessage(content=summary_prompt)]
-        if issue_id is not None:
-            issue_history = (
-                db.query(ChatMessage)
-                .filter(ChatMessage.issue_id == issue_id)
-                .order_by(ChatMessage.created_at.asc())
-                .all()
-            )
-        else:
-            issue_history = history
+        issue_history = history
         for chat in issue_history:
             if chat.role == ChatRole.USER:
                 summary_messages.append(HumanMessage(content=chat.content))
